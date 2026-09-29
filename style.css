@@ -1,0 +1,1032 @@
+/* DESIGN TOKENS & SYSTEM — MELHEM ODONTOLOGIA (BMK PADRÃO PREMIUM)
+   Cores Oficiais Extraídas:
+   - Charcoal Grafite / Slate: #1A1D20, #25292E, #363B42
+   - Accent Metal / Prata / Platina: #D8DCE3, #F1F4F9, #9EA6B3
+   - Highlights & Acentos Nobres: #C5A059 (Champagne Gold suave) ou Silver Glow
+   - WhatsApp Direct: #25D366 / #16A34A
+*/
+
+:root {
+  /* Brand Core */
+  --melhem-dark-base: #0D0F12;
+  --melhem-dark-surface: #15181D;
+  --melhem-dark-card: #1D2128;
+  --melhem-dark-card-hover: #262B34;
+  --melhem-border: rgba(255, 255, 255, 0.08);
+  --melhem-border-hover: rgba(216, 220, 227, 0.35);
+
+  /* Metallic Silver & Platinum Accents */
+  --melhem-silver-light: #F3F5F8;
+  --melhem-silver: #D5DAE1;
+  --melhem-silver-muted: #8E96A4;
+  --melhem-gold-accent: #C8A97E;
+  --melhem-gold-glow: rgba(200, 169, 126, 0.25);
+
+  /* Action / WhatsApp */
+  --wa-green: #25D366;
+  --wa-green-hover: #20BA5A;
+  --wa-green-glow: rgba(37, 211, 102, 0.35);
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Montserrat', sans-serif;
+
+  /* Sizing & Radius */
+  --radius-card: 18px;
+  --radius-button: 16px;
+  --radius-pill: 9999px;
+  --radius-inner: 12px;
+
+  /* Shadows */
+  --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 16px 36px -4px rgba(0, 0, 0, 0.65), 0 0 20px rgba(216, 220, 227, 0.08);
+
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-family: var(--font-sans);
+  background-color: var(--melhem-dark-base);
+  color: var(--melhem-silver-light);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px 16px 48px;
+  position: relative;
+  background-color: var(--melhem-dark-base);
+  overflow-x: hidden;
+}
+
+/* Full-Screen Textured Background (Padrão BMK / Oral Sin na paleta Melhem) */
+.page-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image: url('assets/images/fundo-melhem.webp?v=2');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  opacity: 0.92;
+}
+
+.page-background::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 20%, rgba(13, 15, 18, 0.45) 0%, rgba(13, 15, 18, 0.88) 100%);
+}
+
+/* Ambient Mesh Orbs */
+.ambient-mesh {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.mesh-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.28;
+}
+
+.mesh-orb-1 {
+  width: 380px;
+  height: 380px;
+  background: #3B424E;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.mesh-orb-2 {
+  width: 300px;
+  height: 300px;
+  background: #C8A97E;
+  top: 35%;
+  right: -100px;
+  opacity: 0.12;
+}
+
+.mesh-orb-3 {
+  width: 320px;
+  height: 320px;
+  background: #25D366;
+  bottom: 10%;
+  left: -120px;
+  opacity: 0.08;
+}
+
+/* Container Structure */
+.page-container {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.app-card-outer {
+  width: 100%;
+}
+
+.app-card-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 8px 6px 12px;
+}
+
+.logo-wrapper {
+  position: relative;
+  width: 112px;
+  height: 112px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 4px;
+}
+
+.logo-glow-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(200, 169, 126, 0.6), rgba(255, 255, 255, 0.1));
+  padding: 2px;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: subtleSpin 12s linear infinite;
+}
+
+@keyframes subtleSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.brand-logo {
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  transition: transform var(--transition-smooth);
+}
+
+.logo-wrapper:hover .brand-logo {
+  transform: scale(1.04);
+}
+
+.unit-title {
+  font-family: var(--font-serif);
+  font-size: 2.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: #FFFFFF;
+  margin-bottom: 6px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.badge-tag-specialty {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--melhem-gold-accent);
+  background: rgba(200, 169, 126, 0.1);
+  border: 1px solid rgba(200, 169, 126, 0.28);
+  padding: 4px 14px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 12px;
+}
+
+.unit-tagline {
+  font-size: 0.88rem;
+  color: var(--melhem-silver-muted);
+  line-height: 1.55;
+  max-width: 92%;
+  margin-bottom: 14px;
+}
+
+.rt-info-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rt-address {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: var(--melhem-silver);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.rt-address svg {
+  color: var(--melhem-gold-accent);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   SECTION DIVIDERS
+   ========================================================================== */
+.section-label-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding: 0 4px;
+}
+
+.label-badge {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--melhem-silver);
+  white-space: nowrap;
+}
+
+.label-line {
+  display: none;
+}
+
+.label-count {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--melhem-gold-accent);
+  background: rgba(200, 169, 126, 0.12);
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+}
+
+/* ==========================================================================
+   LINKS STACK (PADRÃO BMK SQUIRCLE COM LUXO)
+   ========================================================================== */
+.links-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: var(--melhem-dark-surface);
+  border: 1px solid var(--melhem-border);
+  border-radius: var(--radius-card);
+  text-decoration: none;
+  color: #FFFFFF;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.7s ease;
+  pointer-events: none;
+}
+
+.btn-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--melhem-border-hover);
+  background: var(--melhem-dark-card);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-card:hover::before {
+  left: 200%;
+}
+
+.btn-card:active {
+  transform: translateY(1px) scale(0.985);
+  transition-duration: 0.1s;
+}
+
+/* Ícones dos Botões */
+.btn-icon-wrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-inner);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform var(--transition-fast);
+}
+
+.btn-card:hover .btn-icon-wrapper {
+  transform: scale(1.06);
+}
+
+.btn-icon-wrapper svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Conteúdo de Texto */
+.btn-text-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.btn-header-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-title {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-subtitle {
+  font-size: 0.78rem;
+  color: var(--melhem-silver-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Trailing Arrow Badge */
+.btn-trailing-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--melhem-silver-muted);
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background var(--transition-fast), color var(--transition-fast);
+}
+
+.btn-trailing-badge svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-card:hover .btn-trailing-badge {
+  transform: translate(3px, -3px);
+  background: rgba(255, 255, 255, 0.14);
+  color: #FFFFFF;
+}
+
+.btn-card:hover .btn-trailing-badge svg {
+  transform: scale(1.12);
+}
+
+.btn-card:active .btn-trailing-badge {
+  transform: translate(1px, -1px) scale(0.95);
+}
+
+/* Customização Específica: WHATSAPP MASTER HERO */
+.btn-card-whatsapp {
+  background: linear-gradient(135deg, rgba(37, 211, 102, 0.15) 0%, rgba(21, 24, 29, 0.95) 60%);
+  border: 1px solid rgba(37, 211, 102, 0.45);
+}
+
+.btn-card-whatsapp:hover {
+  border-color: rgba(37, 211, 102, 0.75);
+  box-shadow: 0 10px 28px -4px var(--wa-green-glow);
+}
+
+.btn-icon-whatsapp {
+  background: var(--wa-green);
+  color: #FFFFFF;
+  border: none;
+  box-shadow: 0 4px 14px var(--wa-green-glow);
+}
+
+.btn-tag-live {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  background: rgba(37, 211, 102, 0.2);
+  color: #4ADE80;
+  padding: 2px 7px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(37, 211, 102, 0.35);
+  box-shadow: 0 0 10px rgba(37, 211, 102, 0.15);
+  animation: pulseTag 2.6s infinite ease-in-out;
+}
+
+@keyframes pulseTag {
+  0%, 100% {
+    box-shadow: 0 0 6px rgba(37, 211, 102, 0.2);
+    border-color: rgba(37, 211, 102, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(37, 211, 102, 0.45);
+    border-color: rgba(37, 211, 102, 0.7);
+  }
+}
+
+.btn-trailing-whatsapp {
+  background: rgba(37, 211, 102, 0.18);
+  color: #4ADE80;
+}
+
+/* Customização Específica: INSTAGRAM */
+.btn-icon-instagram {
+  background: linear-gradient(135deg, #833AB4, #FD1D1D, #FCB045);
+  color: #FFFFFF;
+  border: none;
+}
+
+/* Customização Específica: FACEBOOK */
+.btn-icon-facebook {
+  background: #1877F2;
+  color: #FFFFFF;
+  border: none;
+}
+
+.btn-card-facebook:hover {
+  border-color: rgba(24, 119, 242, 0.4);
+  box-shadow: 0 10px 28px -4px rgba(24, 119, 242, 0.2);
+}
+
+/* Customização Específica: TELEFONE */
+.btn-icon-phone {
+  background: rgba(200, 169, 126, 0.15);
+  color: var(--melhem-gold-accent);
+  border: 1px solid rgba(200, 169, 126, 0.3);
+}
+
+/* Customização Específica: GOOGLE MEU NEGÓCIO */
+.btn-icon-google {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.btn-card-google:hover {
+  border-color: rgba(66, 133, 244, 0.4);
+  box-shadow: 0 10px 28px -4px rgba(66, 133, 244, 0.2);
+}
+
+/* ==========================================================================
+   CARROSSEL DE ESPECIALIDADES & PROCEDIMENTOS
+   ========================================================================== */
+.treatments-section {
+  position: relative;
+  margin-top: 6px;
+  margin-bottom: 12px;
+}
+
+.carousel-outer {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  padding: 0;
+  background: transparent;
+}
+
+.carousel-track {
+  display: flex;
+  width: 100%;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+  touch-action: pan-y pinch-zoom;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  width: 100%;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  opacity: 0.35;
+  transform: scale(0.96);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.treatment-card {
+  background: var(--melhem-dark-surface);
+  border: 1px solid var(--melhem-border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+}
+
+.treatment-image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #111418;
+}
+
+.treatment-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+.treatment-badge-tag {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #FFFFFF;
+  background: rgba(13, 15, 18, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.treatment-content {
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.treatment-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.2;
+}
+
+.treatment-desc {
+  font-size: 0.82rem;
+  color: var(--melhem-silver-muted);
+  line-height: 1.5;
+  min-height: 48px;
+}
+
+.btn-treatment-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 16px;
+  background: var(--melhem-dark-card);
+  border: 1px solid rgba(200, 169, 126, 0.35);
+  border-radius: var(--radius-inner);
+  text-decoration: none;
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  font-weight: 700;
+  transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  margin-top: 4px;
+}
+
+.btn-treatment-action:hover {
+  background: rgba(200, 169, 126, 0.22);
+  border-color: var(--melhem-gold-accent);
+  box-shadow: 0 4px 16px rgba(200, 169, 126, 0.2);
+  transform: translateY(-1px);
+}
+
+.btn-treatment-action:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.btn-inner-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--melhem-gold-accent);
+  transition: transform var(--transition-fast);
+}
+
+.btn-inner-icon svg {
+  width: 13px;
+  height: 13px;
+}
+
+.btn-treatment-action:hover .btn-inner-icon {
+  transform: translate(2px, -2px);
+  background: var(--melhem-gold-accent);
+  color: #000000;
+}
+
+/* Navegação do Carrossel */
+.carousel-nav-btn {
+  position: absolute;
+  top: 35%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(13, 15, 18, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  transition: all var(--transition-fast);
+}
+
+.carousel-nav-btn:hover {
+  background: #FFFFFF;
+  color: #000000;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.carousel-nav-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.prev-btn { left: 8px; }
+.next-btn { right: 8px; }
+
+.carousel-nav-btn svg {
+  width: 18px;
+  height: 18px;
+}
+  height: 18px;
+}
+
+/* Indicadores de Pontos (Dots) */
+.carousel-dots-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 14px;
+  padding-bottom: 4px;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.carousel-dot.active {
+  width: 24px;
+  border-radius: 12px;
+  background: var(--melhem-gold-accent);
+  box-shadow: 0 0 10px var(--melhem-gold-glow);
+}
+
+/* ==========================================================================
+   HORÁRIO DE FUNCIONAMENTO EM TEMPO REAL
+   ========================================================================== */
+.hours-card {
+  background: var(--melhem-dark-surface);
+  border: 1px solid var(--melhem-border);
+  border-radius: var(--radius-card);
+  padding: 18px;
+  box-shadow: var(--shadow-card);
+}
+
+.hours-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--melhem-border);
+}
+
+.hours-icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-inner);
+  background: rgba(200, 169, 126, 0.12);
+  color: var(--melhem-gold-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hours-icon-box svg {
+  width: 18px;
+  height: 18px;
+}
+
+.hours-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hours-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.hours-live-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.76rem;
+  color: var(--melhem-silver-muted);
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #94A3B8;
+  display: inline-block;
+  position: relative;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.live-dot.is-live {
+  background: #22C55E;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+  animation: liveDotPulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@keyframes liveDotPulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+.hours-table {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  color: var(--melhem-silver);
+}
+
+.hours-row.closed {
+  color: var(--melhem-silver-muted);
+  opacity: 0.7;
+}
+
+.hours-time {
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   FOOTER & MODAIS
+   ========================================================================== */
+.app-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding-top: 8px;
+  text-align: center;
+}
+
+.footer-legal-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legal-btn {
+  background: none;
+  border: none;
+  font-size: 0.75rem;
+  color: var(--melhem-silver-muted);
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color var(--transition-fast);
+}
+
+.legal-btn:hover {
+  color: #FFFFFF;
+}
+
+.legal-sep {
+  font-size: 0.75rem;
+  color: var(--melhem-silver-muted);
+}
+
+.footer-credits {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.copyright-text {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--melhem-silver-muted);
+}
+
+.rt-footer-sub {
+  font-size: 0.72rem;
+  color: var(--melhem-silver-muted);
+  opacity: 0.8;
+}
+
+.bmk-signature {
+  margin-top: 6px;
+  display: flex;
+  justify-content: center;
+}
+
+.bmk-logo-img {
+  max-width: 95px;
+  height: auto;
+  opacity: 0.65;
+  transition: opacity var(--transition-fast);
+}
+
+.bmk-logo-img:hover {
+  opacity: 1;
+}
+
+/* Modais LGPD */
+.legal-modal {
+  margin: auto;
+  border: none;
+  background: transparent;
+  padding: 16px;
+  max-width: 440px;
+  width: 90%;
+}
+
+.legal-modal::backdrop {
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.legal-modal-box {
+  background: #171A20;
+  border: 1px solid var(--melhem-border);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  color: var(--melhem-silver-light);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+}
+
+.legal-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--melhem-border);
+}
+
+.legal-modal-title {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: #FFFFFF;
+}
+
+.legal-modal-close {
+  background: none;
+  border: none;
+  color: var(--melhem-silver-muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.legal-modal-content {
+  font-size: 0.84rem;
+  color: var(--melhem-silver-muted);
+  line-height: 1.6;
+  max-height: 320px;
+  overflow-y: auto;
+  padding-right: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.legal-modal-content h3 {
+  font-size: 0.92rem;
+  color: var(--melhem-gold-accent);
+  margin-top: 6px;
+}
+
+.legal-modal-actions {
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid var(--melhem-border);
+}
+
+.btn-legal-confirm {
+  width: 100%;
+  padding: 12px;
+  background: var(--melhem-dark-card);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-inner);
+  color: #FFFFFF;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-legal-confirm:hover {
+  background: var(--melhem-gold-accent);
+  color: #000000;
+}
