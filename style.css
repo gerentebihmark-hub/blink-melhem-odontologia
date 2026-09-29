@@ -497,6 +497,27 @@ body {
   color: #4ADE80;
 }
 
+/* Customização Específica: SITE OFICIAL */
+.btn-card-site {
+  border-color: rgba(200, 169, 126, 0.3);
+}
+
+.btn-card-site:hover {
+  border-color: rgba(200, 169, 126, 0.65);
+  box-shadow: 0 10px 28px -4px rgba(200, 169, 126, 0.22);
+}
+
+.btn-icon-site {
+  background: rgba(200, 169, 126, 0.15);
+  color: var(--melhem-gold-accent);
+  border: 1px solid rgba(200, 169, 126, 0.35);
+}
+
+.btn-card-site:hover .btn-icon-site {
+  background: var(--melhem-gold-accent);
+  color: #0D0F12;
+}
+
 /* Customização Específica: INSTAGRAM */
 .btn-icon-instagram {
   background: linear-gradient(135deg, #833AB4, #FD1D1D, #FCB045);
