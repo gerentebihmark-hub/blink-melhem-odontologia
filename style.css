@@ -569,7 +569,7 @@ body {
   overflow: hidden;
   border-radius: var(--radius-card);
   padding: 0;
-  background: transparent;
+  background: var(--melhem-dark-surface);
 }
 
 .carousel-track {
@@ -585,14 +585,11 @@ body {
   width: 100%;
   flex-shrink: 0;
   box-sizing: border-box;
-  opacity: 0.35;
-  transform: scale(0.96);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  opacity: 1;
 }
 
 .carousel-slide.active {
   opacity: 1;
-  transform: scale(1);
 }
 
 .treatment-card {
